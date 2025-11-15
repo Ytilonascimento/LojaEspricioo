@@ -1,0 +1,106 @@
+type: collection.insomnia.rest/5.0
+name: My first collection
+meta:
+  id: wrk_0e581bcb05c94940b165fb315361a1d4
+  created: 1760055464925
+  modified: 1760055464925
+  description: ""
+collection:
+  - url: http://localhost:8081/produtos
+    name: My first request
+    meta:
+      id: req_34808a5dd02140699062451e4ad216ae
+      created: 1760055465197
+      modified: 1763165833299
+      isPrivate: false
+      description: ""
+      sortKey: -1760055465197
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nomeProduto":"Camisa regata",
+        	"precoProduto": 25
+        	
+        }
+    parameters:
+      - id: pair_8ff46cbab23049ecac72ade85aca1fef
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8081/produtos
+    name: New Request
+    meta:
+      id: req_b61b8d8d12294a3aab8f7da3ff72d530
+      created: 1760055528460
+      modified: 1763158856749
+      isPrivate: false
+      description: ""
+      sortKey: -1760055528460
+    method: GET
+    parameters:
+      - id: pair_3355ab5deb9f4f1f9e5ab8d6f0d25e18
+        name: titulo
+        value: ovelha
+        description: ""
+        disabled: true
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/produtos/
+    name: New Request
+    meta:
+      id: req_9ea01edd647c40b6a1b501c8be7dace1
+      created: 1763158794130
+      modified: 1763158835758
+      isPrivate: false
+      description: ""
+      sortKey: -1763158794130
+    method: PUT
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2358e58232d5b0bf6297c1e944217eea4addc20c
+    created: 1760055464938
+    modified: 1760055464938
+environments:
+  name: Base Environment
+  meta:
+    id: env_2358e58232d5b0bf6297c1e944217eea4addc20c
+    created: 1760055464932
+    modified: 1760055464932
+    isPrivate: false
