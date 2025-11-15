@@ -20,8 +20,7 @@ const produtoModel = {
 
             const querySQL = 'SELECT * FROM Produtos'; // Seleciona tudo da tabela PRODUTOS
 
-            const result = await pool.request()
-                .query(querySQL);
+            const result = await pool.request().query(querySQL);
 
             return result.recordset; // recordset retoran apenas o que está na tabela seleciona ( PRODUTOS )
 
@@ -62,8 +61,25 @@ const produtoModel = {
         }
     },
 
+    atualizarProduto: async (idProduto , nomeProduto , precoProduto) =>{
+        try {
+            const pool = await getConnection();
+            const querySQL = `UPDATE Produtos
+                              SET nomeProduto = @nomeProduto,
+                              precoProduto = @precoProduto
+                              WERE idProduto = @idProduto
+                              `
+            await pool.request()
+            .input("idProduto", sql.UniqueIdentifier, idProduto)
+            .input("nomeProduto", sql.VarChar(100), nomeProduto)
+            .input("precoProduto", sql.Decimal, precoProduto)
+            .query(querySQL);
 
-
+        } catch (error) {
+            console.error("Erro ao atulizar produto", error);
+            throw error;
+        }
+    },
 
     /**
      * Insere um novo produto no banco de dados.
@@ -92,6 +108,26 @@ const produtoModel = {
 
         } catch (error) {
             console.error("Erro ao inserir produto:", error)
+            throw error;
+        }
+    },
+
+    deletarProduto: async (idProduto) => {
+        try {
+            
+            const pool = await getConnection();
+
+            const querySQL =`
+            DELETE FROM Produtos
+            WERE idproduto = @idProduto 
+            `;
+
+            await pool.request()
+            .input('idProduto' , sql.UniqueIdentifier, idProduto)
+            .query(querySQL);
+
+        } catch (error) {
+            console.log("Erro ao deletar produto:", error);
             throw error;
         }
     }

@@ -33,14 +33,17 @@ async function getConnection() { // FUNÇÃO QUE CONECTA CONEXÕES COM O DB - FU
     }
 };
 
-// (async () => { //TESTANDO CONEXÃO
 
-//     const pool = await getConnection(); //AGUARDAR UMA CONEXÃO
 
-//     const result = await pool.request().query("SELECT * FROM Produtos"); // FAZ UMA CONSULTA NA TABELA "PRODUTOS"
 
-//     console.log(result.recordset);
+(async () => { //TESTANDO CONEXÃO
 
-// })();
+    const pool = await getConnection(); //AGUARDAR UMA CONEXÃO
+
+    if (pool) {
+        console.log("Conexão com o Banco de Dados estabelecida com sucesso!");
+    }
+
+})();
 
 module.exports = { sql, getConnection }; //EXPORTANDO --  biblioteca sql e função getConnection
